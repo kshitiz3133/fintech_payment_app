@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "84631138096",
+    "project_id": "fintech-payment-app",
+    "storage_bucket": "fintech-payment-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84631138096:android:6795c819701b2ea53622f5",
+        "android_client_info": {
+          "package_name": "com.example.fintech_payment_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARDTZWB8t0JtNRrKDXYbK7VhasBi-UJxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
