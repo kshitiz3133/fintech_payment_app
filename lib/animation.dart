@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 class Cat extends StatefulWidget {
-  const Cat({Key? key}) : super(key: key);
+  const Cat({super.key});
 
   @override
   State<Cat> createState() => _CatState();
@@ -14,7 +14,7 @@ class _CatState extends State<Cat> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller=AnimationController(duration: Duration(seconds: 2,milliseconds: 500),vsync: this)..repeat();
+    _controller=AnimationController(duration: const Duration(seconds: 2,milliseconds: 500),vsync: this)..repeat();
   }
   @override
   void dispose() {
@@ -25,7 +25,7 @@ class _CatState extends State<Cat> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: Lottie.network(
           "https://lottie.host/0222bc02-257c-4e41-bf47-68b34e99319a/etzLfd2WBe.json",
@@ -36,7 +36,7 @@ class _CatState extends State<Cat> with SingleTickerProviderStateMixin {
 }
 
 class Bat extends StatefulWidget {
-  const Bat({Key? key}) : super(key: key);
+  const Bat({super.key});
 
   @override
   State<Bat> createState() => _BatState();
@@ -49,7 +49,7 @@ class _BatState extends State<Bat> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller=AnimationController(duration: Duration(seconds: 1,milliseconds: 500),vsync: this)..repeat();
+    _controller=AnimationController(duration: const Duration(seconds: 1,milliseconds: 500),vsync: this)..repeat();
   }
   @override
   void dispose() {
@@ -60,7 +60,7 @@ class _BatState extends State<Bat> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: Lottie.network(
           "https://lottie.host/ee318cca-0baa-4ef2-903b-2a40fa143ee3/cV2BU1bFbb.json",

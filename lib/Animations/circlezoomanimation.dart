@@ -1,8 +1,9 @@
 import 'package:fintech_payment_app/Authentication/Account/account.dart';
-import 'package:fintech_payment_app/home.dart';
 import 'package:flutter/material.dart';
 
 class MyCircularContainer extends StatefulWidget {
+  const MyCircularContainer({super.key});
+
   @override
   _MyCircularContainerState createState() => _MyCircularContainerState();
 }
@@ -23,18 +24,18 @@ class _MyCircularContainerState extends State<MyCircularContainer>
   void initState() {
     super.initState();
     _controller2 = AnimationController(
-        vsync: this, duration: Duration(seconds: 1));
+        vsync: this, duration: const Duration(seconds: 1));
     _controller3 = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 400))..forward();
+        vsync: this, duration: const Duration(milliseconds: 400))..forward();
     _opacity1=Tween(begin: 1.0,end: 0.0).animate(_controller2);
-    Future.delayed(Duration(milliseconds: 900), () {
+    Future.delayed(const Duration(milliseconds: 900), () {
       setState(() {
         shouldscale = true;
       });
       // code to be executed after 2 seconds
       //animation conroller
       _controller = AnimationController(
-          vsync: this, duration: Duration(seconds: 2, milliseconds: 100))
+          vsync: this, duration: const Duration(seconds: 2, milliseconds: 100))
         ..forward();
 
 
@@ -50,23 +51,23 @@ class _MyCircularContainerState extends State<MyCircularContainer>
       });
 
 
-      Future.delayed(Duration(seconds: 1,milliseconds: 700), () {
+      Future.delayed(const Duration(seconds: 1,milliseconds: 700), () {
         setState(() {
           a = 2.0;
         });
       });
-      Future.delayed(Duration(seconds: 3,milliseconds: 500), () {
+      Future.delayed(const Duration(seconds: 3,milliseconds: 500), () {
         setState(() {
           _controller2.forward();
         });
       });
     });
 
-    Future.delayed(Duration(seconds: 4,milliseconds: 700), () {
+    Future.delayed(const Duration(seconds: 4,milliseconds: 700), () {
       Navigator.push(context,
           PageRouteBuilder(
-              transitionDuration: Duration(seconds: 1),
-              pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) { return FadeTransition(opacity: _opacity2,child: Account());}));
+              transitionDuration: const Duration(seconds: 1),
+              pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) { return FadeTransition(opacity: _opacity2,child: const Account());}));
     });
   }
 
@@ -81,7 +82,7 @@ class _MyCircularContainerState extends State<MyCircularContainer>
           child: AnimatedScale(
             curve: Curves.fastLinearToSlowEaseIn,
             scale: shouldscale ? _scalinganimation.value + a : 0.0,
-            duration: Duration(seconds: 1),
+            duration: const Duration(seconds: 1),
             child: Container(
               width: MediaQuery
                   .of(context)
@@ -91,7 +92,7 @@ class _MyCircularContainerState extends State<MyCircularContainer>
                   .of(context)
                   .size
                   .height,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Color(0xff6796e9),
               ),

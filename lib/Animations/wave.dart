@@ -4,16 +4,16 @@ import 'dart:math';
 class MyClipPath extends AnimatedWidget {
   final Animation<double> animation;
 
-  MyClipPath(this.animation)
+  const MyClipPath(this.animation, {super.key})
       : super(listenable: animation);
 
-  final Color backgroundColor = Color(0xff6796e9);
+  final Color backgroundColor = const Color(0xff6796e9);
 
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: 180 * (pi / 180),
-      child: Container(
+      child: SizedBox(
         height: 190,
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -41,7 +41,7 @@ class MyClipPath extends AnimatedWidget {
 class BottomWaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    var path = new Path();
+    var path = Path();
 
     path.lineTo(0.0, 40.0);
     path.lineTo(0.0, size.height);
@@ -78,6 +78,8 @@ class BottomWaveClipper extends CustomClipper<Path> {
 
 
 class MyAnimation extends StatefulWidget {
+  const MyAnimation({super.key});
+
   @override
   _MyAnimationState createState() => _MyAnimationState();
 }
@@ -92,7 +94,7 @@ class _MyAnimationState extends State<MyAnimation>
   void initState() {
     super.initState();
     _controller = AnimationController(
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         vsync: this)..repeat();
 
     animation = Tween<double>(begin: -500, end: 0).animate(_controller);

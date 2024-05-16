@@ -8,7 +8,7 @@ class AuthService {
   // Simulated authentication function
   Future<void> login(String username, String password) async {
     // Simulate network request
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     // Emit authentication state change
     _authStreamController.add(true);
   }
@@ -25,7 +25,7 @@ class AuthService {
 class LoginForm extends StatefulWidget {
   final AuthService authService;
 
-  LoginForm({required this.authService});
+  const LoginForm({super.key, required this.authService});
 
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -45,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -54,17 +54,17 @@ class _LoginFormState extends State<LoginForm> {
           children: [
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(labelText: 'Password'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _login,
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
           ],
         ),
@@ -76,23 +76,23 @@ class _LoginFormState extends State<LoginForm> {
 class HomePage extends StatelessWidget {
   final AuthService authService;
 
-  HomePage({required this.authService});
+  const HomePage({super.key, required this.authService});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               authService.logout();
             },
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text('Welcome!'),
       ),
     );
@@ -103,7 +103,7 @@ class HomePage extends StatelessWidget {
 class MyApp extends StatelessWidget {
   final AuthService authService;
 
-  MyApp({required this.authService});
+  const MyApp({super.key, required this.authService});
 
   @override
   Widget build(BuildContext context) {

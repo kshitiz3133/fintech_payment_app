@@ -2,7 +2,7 @@ import 'package:fintech_payment_app/animation.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -10,13 +10,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool flag=false;
-  Widget A= Cat();
+  Widget A= const Cat();
 
 
   void check() async{
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     setState(() {
-      A=Bat();
+      A=const Bat();
     });
   }
 
@@ -28,13 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              flag? A:Text("₹100",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 40),),
+              flag? A:const Text("₹100",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 40),),
               ElevatedButton(onPressed: (){
                 setState(() {
                   flag=true;
                   check();
                 });
-              }, child: Text("Send"))
+              }, child: const Text("Send"))
             ],
           ),
         ),

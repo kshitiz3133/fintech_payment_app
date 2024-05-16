@@ -1,49 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
 class PhoneAuthScreen extends StatefulWidget {
+  const PhoneAuthScreen({super.key});
+
   @override
   _PhoneAuthScreenState createState() => _PhoneAuthScreenState();
 }
 
 class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
-  FirebaseAuth _auth = FirebaseAuth.instance;
-  TextEditingController _phoneNumberController = TextEditingController();
-  TextEditingController _otpController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _otpController = TextEditingController();
   String _verificationId = '';
 
   Future<void> verifyPhoneNumber(String phoneNumber) async {
-    PhoneVerificationCompleted verificationCompleted =
-        (PhoneAuthCredential phoneAuthCredential) async {
+    verificationCompleted(PhoneAuthCredential phoneAuthCredential) async {
       await _auth.signInWithCredential(phoneAuthCredential);
       // Navigate to logged in screen
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoggedInScreen()),
+        MaterialPageRoute(builder: (context) => const LoggedInScreen()),
       );
-    };
+    }
 
-    PhoneVerificationFailed verificationFailed =
-        (FirebaseAuthException authException) {
+    verificationFailed(FirebaseAuthException authException) {
       print('Phone verification failed: ${authException.message}');
-    };
+    }
 
-    PhoneCodeSent codeSent =
-        (String verificationId, int? resendToken) async {
+    codeSent(String verificationId, int? resendToken) async {
       print('Code sent to $phoneNumber');
       _verificationId = verificationId;
-    };
+    }
 
-    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
-        (String verificationId) {
+    codeAutoRetrievalTimeout(String verificationId) {
       _verificationId = verificationId;
-    };
+    }
 
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      timeout: Duration(seconds: 60),
+      timeout: const Duration(seconds: 60),
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
       codeSent: codeSent,
@@ -61,7 +58,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
       // Navigate to logged in screen
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoggedInScreen()),
+        MaterialPageRoute(builder: (context) => const LoggedInScreen()),
       );
     } catch (e) {
       print('Failed to sign in with phone number: $e');
@@ -72,7 +69,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Phone Auth Demo'),
+        title: const Text('Phone Auth Demo'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -82,28 +79,28 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
             TextField(
               controller: _phoneNumberController,
               keyboardType: TextInputType.phone,
-              decoration: InputDecoration(labelText: 'Phone Number'),
+              decoration: const InputDecoration(labelText: 'Phone Number'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 String phoneNumber = '+91${_phoneNumberController.text}';
                 verifyPhoneNumber(phoneNumber);
               },
-              child: Text('Verify'),
+              child: const Text('Verify'),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             TextField(
               controller: _otpController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: 'OTP'),
+              decoration: const InputDecoration(labelText: 'OTP'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 signInWithPhoneNumber(_otpController.text);
               },
-              child: Text('Sign In'),
+              child: const Text('Sign In'),
             ),
           ],
         ),
@@ -113,13 +110,15 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
 }
 
 class LoggedInScreen extends StatelessWidget {
+  const LoggedInScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Logged In'),
+        title: const Text('Logged In'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'User is logged in!',
           style: TextStyle(fontSize: 24),

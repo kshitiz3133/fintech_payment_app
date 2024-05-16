@@ -1,10 +1,7 @@
-import 'package:fintech_payment_app/Authentication/auth.dart';
 import 'package:fintech_payment_app/Phone%20Auth/phoneauth.dart';
-import 'package:fintech_payment_app/animation.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'home.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,11 +10,11 @@ void main() async{
 }
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       //home:AuthPage(),
       home: PhoneAuthScreen(),
     );

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../auth.dart';
 
 class Account extends StatefulWidget {
-  const Account({Key? key}) : super(key: key);
+  const Account({super.key});
 
   @override
   State<Account> createState() => _AccountState();
@@ -34,8 +34,8 @@ class _AccountState extends State<Account> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 8,),
-            Row(
+            const SizedBox(height: 8,),
+            const Row(
               children: [
                 SizedBox(width: 20,),
                 Text(
@@ -44,14 +44,14 @@ class _AccountState extends State<Account> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15.0,50,0,0),
-              child: Text('Logged in As:',style: TextStyle(fontSize: 40,color: Color(0xffBDB0CEFF)),),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(15.0,50,0,0),
+              child: Text('Logged in As:',style: TextStyle(fontSize: 40,color: Color(0xffbdb0ceff)),),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 30, 2, 60),
               // Display only the username
-              child: Text(getUsername(user.email!),style: TextStyle(
+              child: Text(getUsername(user.email!),style: const TextStyle(
                 fontSize: 42,
               ),),
             ),
@@ -66,13 +66,13 @@ class _AccountState extends State<Account> {
                     height: 35,
                     width: 80,
                     decoration: BoxDecoration(
-                      color: Color(0xff6796e9),
+                      color: const Color(0xff6796e9),
                       shape: BoxShape.rectangle,
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(7),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Text('Logout',textAlign: TextAlign.center,style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
                     ),),
                 ),

@@ -6,7 +6,7 @@ import '../../Animations/wave.dart';
 import '../Login/login.dart';
 import '../auth.dart';
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -23,7 +23,7 @@ class _RegisterState extends State<Register> {
   void register()async{
     try {
       if(passwordController.text==confirmpasswordController.text) {
-        showModalBottomSheet(context: context, builder: (context)=> Container(height: 200,child: Text("Registered!"),));
+        showModalBottomSheet(context: context, builder: (context)=> const SizedBox(height: 200,child: Text("Registered!"),));
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: '${emailController.text}@gmail.com',
           password: passwordController.text,
@@ -37,7 +37,7 @@ class _RegisterState extends State<Register> {
         print('done');
 
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => AuthPage()));
+            MaterialPageRoute(builder: (_) => const AuthPage()));
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -60,17 +60,17 @@ class _RegisterState extends State<Register> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              MyAnimation(),
-              SizedBox(height: 15,),
-              Row(
+              const MyAnimation(),
+              const SizedBox(height: 15,),
+              const Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                     child: Text('Register',style: TextStyle(fontSize: 50),),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
@@ -80,20 +80,20 @@ class _RegisterState extends State<Register> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 4.0, // Increase the outline thickness
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 1.0, // Increase the outline thickness
                       ),
                     ),
                     hintText: 'Email Address',
-                    hintStyle: TextStyle(color: Colors.black),
+                    hintStyle: const TextStyle(color: Colors.black),
                   ),
                 ),
               ),
@@ -105,20 +105,20 @@ class _RegisterState extends State<Register> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 4.0, // Increase the outline thickness
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 1.0, // Increase the outline thickness
                       ),
                     ),
                     hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.black),
+                    hintStyle: const TextStyle(color: Colors.black),
                   ),
                 ),
               ),
@@ -130,20 +130,20 @@ class _RegisterState extends State<Register> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 4.0, // Increase the outline thickness
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 1.0, // Increase the outline thickness
                       ),
                     ),
                     hintText: 'Confirm Password',
-                    hintStyle: TextStyle(color: Colors.black),
+                    hintStyle: const TextStyle(color: Colors.black),
                   ),
                 ),
               ),
@@ -155,24 +155,24 @@ class _RegisterState extends State<Register> {
                   height: 38,
                   width: 80,
                   decoration: BoxDecoration(
-                    color: Color(0xff6796e9),
+                    color: const Color(0xff6796e9),
                     shape: BoxShape.rectangle,
                     border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(7),
                   ),
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child:Text('Register',textAlign: TextAlign.center,style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)),
                 ),
               ),
-              SizedBox(height: 80,),
+              const SizedBox(height: 80,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already registered? ',style: TextStyle(fontSize: 18),),
+                  const Text('Already registered? ',style: TextStyle(fontSize: 18),),
                   GestureDetector(onTap: (){
                     Navigator.push(context,
-                        PageRouteBuilder(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) { return Login();}));                },child: Text('Login',style: TextStyle(fontSize: 18,color: Color(0xff6796e9)),)),
+                        PageRouteBuilder(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) { return const Login();}));                },child: const Text('Login',style: TextStyle(fontSize: 18,color: Color(0xff6796e9)),)),
                 ],
               )
             ],

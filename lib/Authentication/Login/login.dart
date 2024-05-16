@@ -6,7 +6,7 @@ import '../../Animations/wave.dart';
 import '../Register/register.dart';
 import '../auth.dart';
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -32,7 +32,7 @@ class _LoginState extends State<Login> {
       //user added successfully
       print('done');
 
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => AuthPage()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const AuthPage()));
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -53,17 +53,17 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              MyAnimation(),
-              SizedBox(height: 15,),
-              Row(
+              const MyAnimation(),
+              const SizedBox(height: 15,),
+              const Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                     child: Text('Login',style: TextStyle(fontSize: 50),),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Padding(
@@ -73,20 +73,20 @@ class _LoginState extends State<Login> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 4.0, // Increase the outline thickness
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 1.0, // Increase the outline thickness
                       ),
                     ),
                     hintText: 'Email Address',
-                    hintStyle: TextStyle(color: Colors.black),
+                    hintStyle: const TextStyle(color: Colors.black),
                   ),
                 ),
               ),
@@ -98,20 +98,20 @@ class _LoginState extends State<Login> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 4.0, // Increase the outline thickness
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black, // Color of the border when not focused
                         width: 1.0, // Increase the outline thickness
                       ),
                     ),
                     hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.black),
+                    hintStyle: const TextStyle(color: Colors.black),
                   ),
                 ),
               ),
@@ -123,30 +123,30 @@ class _LoginState extends State<Login> {
                   height: 35,
                   width: 80,
                   decoration: BoxDecoration(
-                    color: Color(0xff6796e9),
+                    color: const Color(0xff6796e9),
                     shape: BoxShape.rectangle,
                     border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(7),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                     child: Text('Login',textAlign: TextAlign.center,style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
                   ),),
               ),
-              SizedBox(height: 80,),
+              const SizedBox(height: 80,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'New user? ',
                     style: TextStyle(fontSize: 18),
                   ),
                   GestureDetector(
                       onTap: () {
                         Navigator.push(context,
-                            PageRouteBuilder(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) { return Register();}));
+                            PageRouteBuilder(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) { return const Register();}));
                       },
-                      child: Text(
+                      child: const Text(
                         'Register Now',
                         style: TextStyle(fontSize: 18, color: Color(0xff6796e9)),
                       )),
